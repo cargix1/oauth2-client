@@ -1,5 +1,5 @@
 {
-    "name": "cargix1/oauth2-client",
+    "name": "league/oauth2-client",
     "description": "OAuth 2.0 Client Library",
     "license": "MIT",
     "require": {
