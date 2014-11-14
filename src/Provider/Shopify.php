@@ -6,6 +6,7 @@ use League\OAuth2\Client\Entity\User;
 
 class Shopify extends AbstractProvider
 {
+//    public $responseType = 'json';
 
     public function __construct($options)
     {
@@ -25,7 +26,7 @@ class Shopify extends AbstractProvider
 
     public function urlAccessToken()
     {
-        return 'https://www.eventbrite.com/oauth/token';
+        return 'https://'.$this->shopify_url.'.myshopify.com/admin/oauth/access_token';
     }
 
     public function urlUserDetails(\League\OAuth2\Client\Token\AccessToken $token)
@@ -35,22 +36,7 @@ class Shopify extends AbstractProvider
 
     public function userDetails($response, \League\OAuth2\Client\Token\AccessToken $token)
     {
-        $user = new User;
-
-        $name = (isset($response->name)) ? $response->name : null;
-        $email = (isset($response->email)) ? $response->email : null;
-
-        $user->exchangeArray(array(
-            'uid' => $response->id,
-            'nickname' => $response->login,
-            'name' => $name,
-            'email' => $email,
-            'urls'  =>array(
-                'GitHub' => 'http://github.com/' . $response->login,
-            ),
-        ));
-
-        return $user;
+        return false;
     }
 
 }
